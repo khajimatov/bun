@@ -113,7 +113,7 @@ pub fn init(str_: string) MimeType {
                         return json;
                     }
                     
-                    if (strings.eqlComptimeIgnoreLen(str, "octet-stream")) {
+                    if (strings.eqlComptime(str, "octet-stream")) {
                         return other;
                     }
 
