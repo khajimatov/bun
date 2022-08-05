@@ -112,14 +112,15 @@ pub fn init(str_: string) MimeType {
                     if (strings.eqlComptime(str, "json") or strings.eqlComptime(str, "geo+json")) {
                         return json;
                     }
-                }
+                    
+                    if (strings.eqlComptimeIgnoreLen(str, "octet-stream")) {
+                        return other;
+                    }
 
-                if (strings.eqlComptimeIgnoreLen(str, "octet-stream")) {
-                    return other;
-                }
-
-                if (strings.eqlComptime(str, "wasm")) {
-                    return wasm;
+                    if (strings.eqlComptime(str, "wasm")) {
+                        return wasm;
+                    }
+                    
                 }
 
                 return MimeType{ .value = str_, .category = .application };
